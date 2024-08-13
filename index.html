@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrafichartOnline</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" /></head>
+<body class="bg-gray-100">
+    <div id="app" class="container mx-auto p-4">
+        <div class="mb-4">
+            <h1 class="text-3xl mb-2 text-left">GrafichartOnline 1.0</h1>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+            <div class="bg-white p-6 rounded shadow-md lg:col-span-1">
+                <h2 class="text-2xl font-semibold mb-4">Configuración</h2>
+
+                <label class="block mb-2 font-medium">Librería de gráficos:</label>
+                <select id="library" class="w-full mb-4 p-2 border rounded">
+                    <option value="chartjs">Chart.js</option>
+                    <option value="apexcharts">ApexCharts</option>
+                    <option value="d3js">D3.js</option>
+                    <option value="highcharts">Highcharts</option>
+                </select>
+
+                <label class="block mb-2 font-medium">Tipo de gráfico:</label>
+                <select id="chartType" class="w-full mb-4 p-2 border rounded"></select>
+
+                <label class="block mb-2 font-medium">Nombres de los datos:</label>
+                <input id="chartLabels" type="text" class="w-full mb-4 p-2 border rounded" placeholder="e.g., Dato 1, Dato 2, Dato 3">
+
+                <label class="block mb-2 font-medium">Datos:</label>
+                <input id="chartData" type="text" class="w-full mb-4 p-2 border rounded" placeholder="e.g., 10, 20, 30, 40">
+
+                <label class="block mb-2 font-medium">Colores de los datos:</label>
+                <input id="chartColors" type="text" class="w-full mb-4 p-2 border rounded" placeholder="e.g., #ff6384, #36a2eb, #cc65fe">
+
+                <label class="block mb-2 font-medium">Título del gráfico:</label>
+                <input id="chartTitle" type="text" class="w-full mb-4 p-2 border rounded" placeholder="Título del gráfico">
+
+                <label class="block mb-2 font-medium">Tema:</label>
+                <select id="theme" class="w-full mb-4 p-2 border rounded">
+                    <option value="light">Claro</option>
+                    <option value="dark">Oscuro</option>
+                    <option value="blue">Azul</option>
+                    <option value="red">Rojo</option>
+                </select>
+
+                <button id="generateChart" class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded flex items-center justify-center w-full">
+                    <i class="fas fa-chart-bar mr-2"></i> Generar Gráfico
+                </button>
+            </div>
+
+            <div class="bg-white p-6 rounded shadow-md lg:col-span-2 flex flex-col items-center justify-center underline">
+                <h2 class="text-2xl font-semibold mb-4">Previsualización <i class="fas fa-eye"></i></h2>
+                <div id="chartContainer" class="w-full">
+                    <canvas id="chartPreview" class="max-w-full"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-6 p-6 rounded shadow-md relative bg-white">
+            <h2 class="text-2xl font-semibold mb-4">Código Generado</h2>
+            <textarea id="generatedCode" class="w-full p-2 border rounded" rows="6" readonly></textarea>
+            <button id="copyCode" class="absolute right-7 bottom-9 text-slate-500 py-2 px-4 rounded flex items-center justify-center bg-white">
+                <i class="fas fa-clipboard"></i>
+            </button>
+        </div>
+
+        <div class="mt-4 text-right">
+            <button id="downloadImage" class="bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded flex items-center justify-center">
+                <i class="fas fa-download mr-2"></i> Descargar Imagen
+            </button>
+        </div>
+    </div>
+    <footer class="p-3 text-center"><p> - Proyecto programado por <a href="https://luigiadducci.netlify.app" class="underline">Luigi Adducci</a> // <a href="https://github.com/LuigiValentino/GrafichartOnline" class="underline">Link del repo</a> -</p></footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.1.1/d3.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="scripts/generateChart.js"></script>
+</body>
+</html>
